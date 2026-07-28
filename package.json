@@ -1,0 +1,16 @@
+{
+  "name": "crafttropic-site",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "node build/dev-server.mjs",
+    "build": "node build/build-static.mjs",
+    "start": "node build/dev-server.mjs"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "type": "module"
+}
