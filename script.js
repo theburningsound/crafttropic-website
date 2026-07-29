@@ -95,9 +95,12 @@ form.addEventListener('submit', event => {
     return;
   }
 
-  // CONNECT REAL ENDPOINT HERE: replace this demo success state with fetch() or a normal form submission.
-  form.reset();
+  const formData = new FormData(form);
+  const submission = Object.fromEntries(formData);
+  submission.service = formData.getAll('service');
+
   success.hidden = false;
+  form.reset();
   success.focus();
 });
 
