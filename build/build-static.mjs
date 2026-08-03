@@ -17,8 +17,9 @@ const staticFiles = {
   '/': ['text/html; charset=utf-8', await readFile('index.html', 'utf8')],
   '/index.html': ['text/html; charset=utf-8', await readFile('index.html', 'utf8')],
   '/styles.css': ['text/css; charset=utf-8', await readFile('styles.css', 'utf8')],
-  '/script.js': ['text/javascript; charset=utf-8', await readFile('script.js', 'utf8')]
+  '/script.js': ['text/javascript; charset=utf-8', await readFile('script.js', 'utf8')],
+  '/assets/og.png': ['image/png', (await readFile('assets/og.png')).toString('base64'), true]
 };
-const worker = `const files = ${JSON.stringify(staticFiles)};\nexport default { async fetch(request) { const path = new URL(request.url).pathname; const file = files[path] || files['/']; return new Response(file[1], { headers: { 'content-type': file[0], 'cache-control': path === '/' ? 'no-cache' : 'public, max-age=3600' } }); } };\n`;
+const worker = `const files = ${JSON.stringify(staticFiles)};\nexport default { async fetch(request) { const path = new URL(request.url).pathname; const file = files[path] || files['/']; const body = file[2] ? Uint8Array.from(atob(file[1]), char => char.charCodeAt(0)) : file[1]; return new Response(body, { headers: { 'content-type': file[0], 'cache-control': path === '/' ? 'no-cache' : 'public, max-age=3600' } }); } };\n`;
 await writeFile('dist/server/index.js', worker);
 console.log('Built static site in dist/');

@@ -54,6 +54,9 @@ updateHeader();
 const form = document.querySelector('#quote-form');
 const fields = [...form.querySelectorAll('input[required], select[required], textarea[required]')];
 const success = document.querySelector('#form-success');
+const formError = document.querySelector('#form-error');
+const submitButton = form.querySelector('button[type="submit"]');
+const submitButtonLabel = submitButton.textContent;
 
 function showError(field, message) {
   field.setAttribute('aria-invalid', 'true');
@@ -81,9 +84,10 @@ fields.forEach(field => {
   field.addEventListener('input', () => { if (field.getAttribute('aria-invalid') === 'true') validateField(field); });
 });
 
-form.addEventListener('submit', event => {
+form.addEventListener('submit', async event => {
   event.preventDefault();
   success.hidden = true;
+  formError.hidden = true;
   const validFields = fields.map(validateField).every(Boolean);
   const checkedServices = form.querySelectorAll('input[name="service"]:checked');
   const serviceError = document.querySelector('#service-error');
@@ -99,9 +103,31 @@ form.addEventListener('submit', event => {
   const submission = Object.fromEntries(formData);
   submission.service = formData.getAll('service');
 
-  success.hidden = false;
-  form.reset();
-  success.focus();
+  submitButton.disabled = true;
+  submitButton.textContent = 'Sending…';
+
+  try {
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: JSON.stringify(submission),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) throw new Error('Form submission failed.');
+
+    success.hidden = false;
+    form.reset();
+    success.focus();
+  } catch {
+    formError.hidden = false;
+    formError.focus();
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = submitButtonLabel;
+  }
 });
 
 document.querySelectorAll('input[name="service"]').forEach(box => box.addEventListener('change', () => {
