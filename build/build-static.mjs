@@ -5,6 +5,7 @@ await mkdir('dist/assets', { recursive: true });
 await mkdir('dist/server', { recursive: true });
 await Promise.all([
   cp('index.html', 'dist/index.html'),
+  cp('privacy.html', 'dist/privacy.html'),
   cp('styles.css', 'dist/styles.css'),
   cp('script.js', 'dist/script.js'),
   cp('assets', 'dist/assets', { recursive: true }),
@@ -16,6 +17,8 @@ await Promise.all([
 const staticFiles = {
   '/': ['text/html; charset=utf-8', await readFile('index.html', 'utf8')],
   '/index.html': ['text/html; charset=utf-8', await readFile('index.html', 'utf8')],
+  '/privacy': ['text/html; charset=utf-8', await readFile('privacy.html', 'utf8')],
+  '/privacy.html': ['text/html; charset=utf-8', await readFile('privacy.html', 'utf8')],
   '/styles.css': ['text/css; charset=utf-8', await readFile('styles.css', 'utf8')],
   '/script.js': ['text/javascript; charset=utf-8', await readFile('script.js', 'utf8')],
   '/assets/og.png': ['image/png', (await readFile('assets/og.png')).toString('base64'), true]

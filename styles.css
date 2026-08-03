@@ -135,6 +135,8 @@ fieldset { margin: 32px 0; padding: 0; border: 0; }
 .checkbox-grid input { width: auto; accent-color: var(--forest); }
 .form-success { margin: 25px 0 0; padding: 15px; border-left: 3px solid var(--lime); background: var(--forest); color: var(--white); }
 .form-error { margin: 25px 0 0; padding: 15px; border-left: 3px solid #9d2424; background: #fff4f1; color: #7a1c1c; }
+.form-privacy { margin: 0 0 20px; color: #65706a; font-size: 11px; line-height: 1.6; }
+.form-privacy a { color: var(--forest); text-decoration: underline; text-underline-offset: 3px; }
 .footer { padding: 70px 0 25px; color: rgba(255,255,255,.7); background: #0d1d17; font-size: 13px; }
 .footer-top { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; padding-bottom: 60px; }
 .footer-top p { margin-bottom: 4px; }
@@ -142,6 +144,19 @@ fieldset { margin: 32px 0; padding: 0; border: 0; }
 .footer-contact { display: grid; align-content: start; gap: 10px; }
 .footer-bottom { display: flex; justify-content: space-between; padding-top: 20px; border-top: 1px solid var(--light-line); }
 .footer-bottom div { display: flex; gap: 20px; }
+.legal-page { min-height: 100vh; background: var(--ivory); }
+.legal-header { padding: 28px 0; color: var(--white); background: var(--forest); }
+.legal-header .shell { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.legal-header .wordmark { font-size: 28px; }
+.legal-back { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.legal-main { padding: 90px 0 110px; }
+.legal-content { max-width: 760px; }
+.legal-content h1 { margin-bottom: 18px; color: var(--forest); font-size: clamp(3.5rem, 9vw, 6.5rem); }
+.legal-updated { margin-bottom: 55px; color: #65706a; font-size: 12px; }
+.legal-content h2 { margin: 45px 0 14px; color: var(--forest); font-family: var(--sans); font-size: 15px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.legal-content p, .legal-content li { color: #39443f; font-size: 16px; line-height: 1.75; }
+.legal-content ul { display: grid; gap: 8px; margin: 16px 0 0 22px; }
+.legal-content a { color: var(--coral); text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 1100px) and (min-width: 901px) {
   .nav { gap: 18px; }
   .nav-links { gap: 14px; }
