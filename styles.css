@@ -113,12 +113,6 @@ h1 em,h2 em,h3 em { font-weight: 400; color: var(--coral); }
 .contact-intro { position: sticky; top: 120px; }
 .contact-intro > p:not(.eyebrow) { max-width: 380px; margin-top: 30px; color: #65706a; }
 .contact-meta { display: grid; gap: 5px; margin-top: 55px; font-size: 13px; }
-.contact-email { display: inline-grid; grid-template-columns: auto 1fr; align-items: center; gap: 13px; width: fit-content; margin-top: 22px; padding: 14px 18px; border: 1px solid var(--line); color: var(--ink); transition: border-color .2s, color .2s; }
-.contact-email:hover { color: var(--coral); border-color: var(--coral); }
-.contact-email .email-icon { color: var(--coral); }
-.contact-email-copy { display: grid; gap: 1px; }
-.contact-email-copy small { color: #65706a; font-size: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
-.contact-email-copy strong { font-size: 13px; font-weight: 500; letter-spacing: .01em; }
 .quote-form { padding: 45px; border: 1px solid var(--line); background: var(--cream); }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px 20px; }
 .field { display: grid; align-content: start; }
